@@ -315,7 +315,9 @@
 				<textFieldExpression><![CDATA[$F{company-header}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="10" y="6" width="157" height="100" isRemoveLineWhenBlank="true" uuid="99c09572-af27-4793-a093-2bdb7b2b8184"/>
+				<reportElement x="10" y="6" width="157" height="100" isRemoveLineWhenBlank="true" uuid="99c09572-af27-4793-a093-2bdb7b2b8184">
+					<printWhenExpression><![CDATA[$F{company-logo}.length()>0]]></printWhenExpression>
+				</reportElement>
 				<imageExpression><![CDATA[$F{company-logo}]]></imageExpression>
 			</image>
 		</band>
