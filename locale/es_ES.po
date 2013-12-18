@@ -36,7 +36,7 @@ msgstr "Precio"
 
 msgctxt "jasper:stock.shipment.out.delivery_note:"
 msgid "Source document"
-msgstr "Documento/s relacionado/s"
+msgstr "Documento relacionado"
 
 msgctxt "jasper:stock.shipment.out.delivery_note:"
 msgid "Tax"
