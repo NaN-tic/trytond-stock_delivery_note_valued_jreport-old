@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="delivery_note" language="i18ngroovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c91ba985-840e-4136-8813-2033d76ec71b">
-	<property name="ireport.zoom" value="1.3310000000000008"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="delivery_note_valued" language="i18ngroovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c91ba985-840e-4136-8813-2033d76ec71b">
+	<property name="ireport.zoom" value="1.6105100000000012"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="TRYTON_RELATIONS" value="[&apos;outgoing_moves&apos;]"/>
@@ -110,6 +110,12 @@
 	<field name="delivery_address-comment_shipment" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/delivery_address-delivery_address/comment_shipment-comment_shipment]]></fieldDescription>
 	</field>
+	<field name="move-total_amount" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/outgoing_moves-outgoing_moves/total_amount-total_amount]]></fieldDescription>
+	</field>
+	<field name="move-untaxed_amount" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/outgoing_moves-outgoing_moves/untaxed_amount-untaxed_amount]]></fieldDescription>
+	</field>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{customer-lang} != null && $F{customer-lang}.length() == 5 ? new Locale($F{customer-lang}) : ( $F{customer-lang} != null && $F{customer-lang}.length() == 2 ? new Locale($F{customer-lang}) : new Locale('en_US'))]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{customer-lang} != null && $F{customer-lang}.length() == 5 ? new Locale($F{customer-lang}) : ( $F{customer-lang} != null && $F{customer-lang}.length() == 2 ? new Locale($F{customer-lang}) : new Locale('en_US'))]]></initialValueExpression>
@@ -126,14 +132,14 @@
 					<textFieldExpression><![CDATA[$F{full_name-full_name}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="177" y="138" width="148" height="12" uuid="d4ea5653-f41c-422f-acc1-ceada0793612"/>
+					<reportElement x="146" y="138" width="148" height="12" uuid="d4ea5653-f41c-422f-acc1-ceada0793612"/>
 					<textElement>
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Description")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="113" y="138" width="50" height="12" uuid="7d0f7e2b-3332-4f27-be98-a62091577018"/>
+					<reportElement x="93" y="138" width="50" height="12" uuid="7d0f7e2b-3332-4f27-be98-a62091577018"/>
 					<textElement textAlignment="Left">
 						<font size="9"/>
 					</textElement>
@@ -210,13 +216,6 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Customer Code")+": "+$F{customer-code}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="459" y="138" width="79" height="12" uuid="266d85f2-dd77-4d3c-bc87-7c810e65fab1"/>
-					<textElement textAlignment="Right">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Price")]]></textFieldExpression>
-				</textField>
-				<textField>
 					<reportElement x="10" y="63" width="228" height="12" uuid="1c481b06-6656-46ee-96a7-67ed95c4eeec">
 						<printWhenExpression><![CDATA[$F{carrier-rec_name}!= null]]></printWhenExpression>
 					</reportElement>
@@ -224,6 +223,20 @@
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Carrier")+": "+$F{carrier-rec_name}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="492" y="138" width="48" height="12" uuid="1b685b4f-7984-4415-bdc7-2c9e9e54d876"/>
+					<textElement textAlignment="Right">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[tr($V{L},"Total")]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="447" y="138" width="45" height="12" uuid="72715637-b8ad-46a1-a1a9-c89fde4cbd27"/>
+					<textElement textAlignment="Left">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[tr($V{L},"Untaxed")]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -233,73 +246,95 @@
 					<reportElement x="10" y="1" width="530" height="1" uuid="047350d2-2791-4bca-91d0-7045151f997a"/>
 				</line>
 				<textField>
-					<reportElement x="390" y="44" width="55" height="12" uuid="de625341-98c6-4f92-a08b-62bf1fcf380c"/>
+					<reportElement x="390" y="44" width="55" height="12" uuid="de625341-98c6-4f92-a08b-62bf1fcf380c">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement>
 						<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Total")+":"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="527" y="26" width="19" height="12" uuid="1d358001-7df6-48e5-a22e-7a009687617f"/>
+					<reportElement x="527" y="26" width="19" height="12" uuid="1d358001-7df6-48e5-a22e-7a009687617f">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{company-currency-symbol}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="527" y="44" width="19" height="12" uuid="6ea736ce-8741-4dba-b930-cd489ea03667"/>
+					<reportElement x="527" y="44" width="19" height="12" uuid="6ea736ce-8741-4dba-b930-cd489ea03667">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{company-currency-symbol}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="527" y="12" width="19" height="12" uuid="a160af30-e81c-4566-9a7a-029429eafcba"/>
+					<reportElement x="527" y="12" width="19" height="12" uuid="a160af30-e81c-4566-9a7a-029429eafcba">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{company-currency-symbol}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="390" y="40" width="150" height="1" uuid="8a6152e0-8fc2-4a70-9e3e-d8dceeb8c47a"/>
+					<reportElement x="390" y="40" width="150" height="1" uuid="8a6152e0-8fc2-4a70-9e3e-d8dceeb8c47a">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 				</line>
 				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
-					<reportElement x="445" y="12" width="80" height="12" uuid="ebc66293-02ff-4a2a-be59-8d8cf87486e5"/>
+					<reportElement x="445" y="12" width="80" height="12" uuid="ebc66293-02ff-4a2a-be59-8d8cf87486e5">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Right">
 						<font size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{untaxed_amount-untaxed_amount} ? $F{untaxed_amount-untaxed_amount} : '-']]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{untaxed_amount-untaxed_amount} ? $F{untaxed_amount-untaxed_amount} : '0']]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
-					<reportElement x="445" y="26" width="80" height="12" uuid="66414bc4-36ae-472e-8ec6-aeda64bf04b7"/>
+					<reportElement x="445" y="26" width="80" height="12" uuid="66414bc4-36ae-472e-8ec6-aeda64bf04b7">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Right">
 						<font size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{tax_amount-tax_amount} ? $F{tax_amount-tax_amount} : '-']]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{tax_amount-tax_amount} ? $F{tax_amount-tax_amount} : '0']]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="390" y="26" width="55" height="12" uuid="4bf4d17d-3d71-4f2b-a8ba-b2edb20048c9"/>
+					<reportElement x="390" y="26" width="55" height="12" uuid="4bf4d17d-3d71-4f2b-a8ba-b2edb20048c9">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement>
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Tax")+":"]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
-					<reportElement x="445" y="44" width="80" height="12" uuid="852fd0bd-e0ee-4daa-ac62-4fcd74e62d52"/>
+					<reportElement x="445" y="44" width="80" height="12" uuid="852fd0bd-e0ee-4daa-ac62-4fcd74e62d52">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Right">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{total_amount-total_amount} ? $F{total_amount-total_amount} : '-']]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{total_amount-total_amount} ? $F{total_amount-total_amount} : '0']]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="390" y="12" width="55" height="12" uuid="4f4e9de8-ee37-40c9-b4dd-54c05521252f"/>
+					<reportElement x="390" y="12" width="55" height="12" uuid="4f4e9de8-ee37-40c9-b4dd-54c05521252f">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 					<textElement>
 						<font size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Untaxed")+":"]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="390" y="8" width="150" height="1" uuid="7ff657f6-10c3-49bf-9e14-71ab814c30cb"/>
+					<reportElement x="390" y="8" width="150" height="1" uuid="7ff657f6-10c3-49bf-9e14-71ab814c30cb">
+						<printWhenExpression><![CDATA[$F{state-state} == 'done']]></printWhenExpression>
+					</reportElement>
 				</line>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement x="10" y="9" width="360" height="47" isRemoveLineWhenBlank="true" uuid="7dc52fe8-c69b-45bf-a757-ec85a69c3eb7"/>
@@ -331,18 +366,18 @@
 	<detail>
 		<band height="15" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="177" y="2" width="282" height="12" uuid="848831dc-c427-42ec-880f-72bcd1cbc193"/>
+				<reportElement x="146" y="2" width="305" height="12" uuid="848831dc-c427-42ec-880f-72bcd1cbc193"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{rec_name-rec_name}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0;-#,##0">
-				<reportElement x="113" y="2" width="50" height="12" uuid="c0ee0786-746b-4c0d-9976-8f8b35bc1464"/>
+				<reportElement x="93" y="2" width="50" height="12" uuid="c0ee0786-746b-4c0d-9976-8f8b35bc1464"/>
 				<textElement textAlignment="Left">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{quantity-quantity}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{quantity-quantity} ? $F{quantity-quantity} : '0']]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00;-#,##0.00">
 				<reportElement x="13" y="2" width="75" height="12" uuid="f5611945-7651-46a2-86bb-5081adf88d2f"/>
@@ -351,12 +386,14 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{code-code}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
-				<reportElement x="459" y="2" width="79" height="12" uuid="3938d467-5c06-4046-a39d-d784137b028c"/>
-				<textElement textAlignment="Right">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{unit_price-unit_price} ? $F{unit_price-unit_price} : 0]]></textFieldExpression>
+			<textField>
+				<reportElement x="447" y="2" width="45" height="12" uuid="ec43897a-bf45-4166-a66f-cc89b2c9996e"/>
+				<textFieldExpression><![CDATA[$F{move-untaxed_amount} ? $F{move-untaxed_amount} : '0']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="492" y="2" width="46" height="12" uuid="e930b2c8-b2f8-4ad1-85ec-a179e847dce7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{move-total_amount} ? $F{move-total_amount} : '0']]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

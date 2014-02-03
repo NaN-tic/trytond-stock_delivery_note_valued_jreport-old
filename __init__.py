@@ -7,5 +7,5 @@ from .shipment import *
 
 def register():
     Pool.register(
-        DeliveryValued,
+        DeliveryNoteValued,
         module='stock_delivery_note_valued_jreport', type_='report')

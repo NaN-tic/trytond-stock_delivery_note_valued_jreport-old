@@ -6,46 +6,46 @@ msgctxt "model:ir.action,name:report_shipment_out_delivery_valued"
 msgid "Delivery Note Valued"
 msgstr "Albarán valorado"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Carrier"
 msgstr "Mensajero"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Code"
 msgstr "Codi"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Customer Code"
 msgstr "Código cliente"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Delivery Note"
 msgstr "Albarán"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Description"
 msgstr "Descripción"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Price"
 msgstr "Precio"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Source document"
 msgstr "Documento relacionado"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Tax"
 msgstr "Impuesto"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Total"
 msgstr "Total"
 
-msgctxt "jasper:stock.shipment.out.delivery_note:"
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Untaxed"
-msgstr "Base imponible"
+msgstr "Base"
