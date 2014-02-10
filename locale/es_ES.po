@@ -49,3 +49,7 @@ msgstr "Total"
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Untaxed"
 msgstr "Base"
+
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
+msgid "Date"
+msgstr "Fecha"
