@@ -7,10 +7,6 @@ msgid "Delivery Note Valued"
 msgstr "Albarán valorado"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
-msgid "Carrier"
-msgstr "Missatger"
-
-msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Code"
 msgstr "Codi"
 

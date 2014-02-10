@@ -110,9 +110,6 @@
 	<field name="tax_amount-tax_amount" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/tax_amount-tax_amount]]></fieldDescription>
 	</field>
-	<field name="carrier-rec_name" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/carrier-carrier/rec_name-rec_name]]></fieldDescription>
-	</field>
 	<field name="comment-comment" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/comment-comment]]></fieldDescription>
 	</field>
@@ -226,15 +223,6 @@
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Customer Code")+": "+$F{customer-code}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="10" y="63" width="228" height="12" uuid="1c481b06-6656-46ee-96a7-67ed95c4eeec">
-						<printWhenExpression><![CDATA[$F{carrier-rec_name}!= null]]></printWhenExpression>
-					</reportElement>
-					<textElement>
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Carrier")+": "+$F{carrier-rec_name}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="492" y="138" width="48" height="12" uuid="1b685b4f-7984-4415-bdc7-2c9e9e54d876"/>
