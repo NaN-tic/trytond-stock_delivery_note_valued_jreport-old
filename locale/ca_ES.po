@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "model:ir.action,name:report_shipment_out_delivery_valued"
 msgid "Delivery Note Valued"
-msgstr "Albarán valorado"
+msgstr "Albarà valorado"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Code"
