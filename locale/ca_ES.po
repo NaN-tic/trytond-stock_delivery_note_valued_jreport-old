@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "model:ir.action,name:report_shipment_out_delivery_valued"
 msgid "Delivery Note Valued"
-msgstr "Albarà valorado"
+msgstr "Albarà valorat"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Code"
@@ -13,6 +13,10 @@ msgstr "Codi"
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Customer Code"
 msgstr "Codi client"
+
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
+msgid "Date"
+msgstr "Data"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Delivery Note"
@@ -47,5 +51,5 @@ msgid "Untaxed"
 msgstr "Base"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
-msgid "Date"
-msgstr "Data"
+msgid "Shipment Address"
+msgstr "Adreça d'enviament"

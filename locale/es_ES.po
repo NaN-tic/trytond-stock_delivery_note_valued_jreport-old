@@ -8,11 +8,15 @@ msgstr "Albarán valorado"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Code"
-msgstr "Codi"
+msgstr "Código"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Customer Code"
 msgstr "Código cliente"
+
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
+msgid "Date"
+msgstr "Fecha"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Delivery Note"
@@ -23,8 +27,16 @@ msgid "Description"
 msgstr "Descripción"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
+msgid "Expired"
+msgstr "Caducitat"
+
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Quantity"
 msgstr "Cantidad"
+
+msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
+msgid "Lot"
+msgstr "Lot"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
 msgid "Price"
@@ -47,5 +59,5 @@ msgid "Untaxed"
 msgstr "Base"
 
 msgctxt "jasper:stock.shipment.out.delivery_note_valued:"
-msgid "Date"
-msgstr "Fecha"
+msgid "Shipment Address"
+msgstr "Dirección de envío"
