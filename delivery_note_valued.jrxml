@@ -50,7 +50,7 @@
 	<field name="company-currency-symbol" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/company-company/currency-currency/symbol-symbol]]></fieldDescription>
 	</field>
-	<field name="company-shipment_qty" class="java.lang.String">
+	<field name="company-shipment_qty" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[/data/record/company-company/shipment_qty-shipment_qty]]></fieldDescription>
 	</field>
 	<field name="reference-reference" class="java.lang.String">
