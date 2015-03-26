@@ -95,6 +95,12 @@
 	<field name="origin-origin" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/origin-origin]]></fieldDescription>
 	</field>
+	<field name="origins-origins" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/origins-origins]]></fieldDescription>
+	</field>
+	<field name="origin_info-origin_info" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/origin_info-origin_info]]></fieldDescription>
+	</field>
 	<field name="untaxed_amount_func-untaxed_amount_func" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/untaxed_amount_func-untaxed_amount_func]]></fieldDescription>
 	</field>
@@ -204,12 +210,12 @@
 				</textField>
 				<textField>
 					<reportElement x="10" y="34" width="250" height="12" uuid="0307a30c-4131-4421-8c58-df93a2479ea0">
-						<printWhenExpression><![CDATA[$F{origin-origin}!= null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{origins-origins}!= '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Source document")+": "+$F{origin-origin}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[tr($V{L},"Source document")+": "+$F{origins-origins}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="13" y="138" width="75" height="12" uuid="1cf94199-274e-4fb8-94b0-750a755e8e6a"/>
@@ -220,7 +226,7 @@
 				</textField>
 				<textField>
 					<reportElement x="10" y="46" width="250" height="12" uuid="40160dc5-1170-46bb-9d13-35af190bd762">
-						<printWhenExpression><![CDATA[$F{customer-code}!= null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{customer-code}!= '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9"/>
