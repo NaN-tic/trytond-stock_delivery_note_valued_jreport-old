@@ -53,6 +53,9 @@
 	<field name="company-shipment_qty" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[/data/record/company-company/shipment_qty-shipment_qty]]></fieldDescription>
 	</field>
+	<field name="company-lang" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/company-company/party-party/lang-lang/code-code]]></fieldDescription>
+	</field>
 	<field name="reference-reference" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/reference-reference]]></fieldDescription>
 	</field>
@@ -357,7 +360,7 @@
 				<textElement>
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{customer-lang} ? $F{product-rec_name}.$F{customer-lang} : $F{product-rec_name}.'en_US']]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{customer-lang} && $F{product-rec_name}.$F{customer-lang} ? $F{product-rec_name}.$F{customer-lang} : $F{product-rec_name}.$F{company-lang}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
 				<reportElement x="93" y="2" width="50" height="12" uuid="c0ee0786-746b-4c0d-9976-8f8b35bc1464"/>
