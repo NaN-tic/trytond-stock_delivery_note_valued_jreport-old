@@ -5,8 +5,8 @@ from trytond.pool import PoolMeta
 from trytond.modules.jasper_reports.jasper import JasperReport
 
 __all__ = ['DeliveryNoteValued']
-__metaclass__ = PoolMeta
 
 
 class DeliveryNoteValued(JasperReport):
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out.delivery_note_valued'
