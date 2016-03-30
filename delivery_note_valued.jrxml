@@ -56,11 +56,11 @@
 	<field name="company-lang" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/company-company/party-party/lang-lang/code-code]]></fieldDescription>
 	</field>
-	<field name="reference-reference" class="java.lang.String">
+	<field name="reference" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/reference-reference]]></fieldDescription>
 	</field>
-	<field name="shipment-code" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/code-code]]></fieldDescription>
+	<field name="number" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/number-number]]></fieldDescription>
 	</field>
 	<field name="state-state" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/state-state]]></fieldDescription>
@@ -185,12 +185,12 @@
 				</textField>
 				<textField>
 					<reportElement x="10" y="4" width="250" height="15" forecolor="#010101" uuid="322d34d8-b653-4849-8e5d-dcbc1321027b">
-						<printWhenExpression><![CDATA[$F{shipment-code} != '']]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{number} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Left">
 						<font size="11" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Delivery Note")+" Nº "+$F{shipment-code}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[tr($V{L},"Delivery Note")+" Nº "+$F{number}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="10" y="21" width="250" height="12" uuid="123f8409-a763-484f-ad0b-65f6d67b822b">
@@ -249,6 +249,13 @@
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Untaxed")]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="10" y="58" width="250" height="14" uuid="19fdf8a3-0b8c-48e4-831b-24acd503ca0c"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{reference}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
