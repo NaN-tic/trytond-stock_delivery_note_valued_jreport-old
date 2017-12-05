@@ -131,11 +131,8 @@
 	<field name="delivery_address-comment_shipment" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/delivery_address-delivery_address/comment_shipment-comment_shipment]]></fieldDescription>
 	</field>
-	<field name="move-total_amount" class="java.lang.Number">
-		<fieldDescription><![CDATA[/data/record/outgoing_moves-outgoing_moves/total_amount-total_amount]]></fieldDescription>
-	</field>
-	<field name="move-untaxed_amount" class="java.lang.Number">
-		<fieldDescription><![CDATA[/data/record/outgoing_moves-outgoing_moves/untaxed_amount-untaxed_amount]]></fieldDescription>
+	<field name="move-amount" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/outgoing_moves-outgoing_moves/amount-amount]]></fieldDescription>
 	</field>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{customer-lang} != null && $F{customer-lang}.length() == 5 ? new Locale($F{customer-lang}) : ( $F{customer-lang} != null && $F{customer-lang}.length() == 2 ? new Locale($F{customer-lang}) : new Locale('en_US'))]]></variableExpression>
@@ -241,14 +238,7 @@
 					<textElement textAlignment="Right">
 						<font size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Total")]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="447" y="138" width="45" height="12" uuid="72715637-b8ad-46a1-a1a9-c89fde4cbd27"/>
-					<textElement textAlignment="Left">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Untaxed")]]></textFieldExpression>
+					<textFieldExpression><![CDATA[tr($V{L},"Amount")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement x="10" y="58" width="250" height="14" uuid="19fdf8a3-0b8c-48e4-831b-24acd503ca0c"/>
@@ -384,13 +374,9 @@
 				<textFieldExpression><![CDATA[$F{code-code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="447" y="2" width="45" height="12" uuid="ec43897a-bf45-4166-a66f-cc89b2c9996e"/>
-				<textFieldExpression><![CDATA[$F{move-untaxed_amount} ? $F{move-untaxed_amount} : '0']]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="492" y="2" width="46" height="12" uuid="e930b2c8-b2f8-4ad1-85ec-a179e847dce7"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{move-total_amount} ? $F{move-total_amount} : '0']]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{move-amount} ? $F{move-amount} : '0']]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
